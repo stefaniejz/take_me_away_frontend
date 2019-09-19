@@ -1,6 +1,7 @@
 @import '~antd/dist/antd.css';
 .App {
   text-align: center;
+  padding-top: 50px;
 }
 
 .App-logo {
@@ -53,6 +54,75 @@
   background:#e6e6e6;
   min-height: 50vh;
   min-width: 30px;
-  
- 
+}
+
+.intro {
+  position: relative;
+  padding-top: 30px;
+  padding-bottom: 120px;
+}
+
+.intro-text {
+  position: relative;
+  padding-left: 30px;
+  padding-right: 30px;
+  z-index: 1;
+  text-align: left;
+  color: #f2f2f2
+}
+
+.intro-text-title {
+  color: #f2f2f2
+}
+
+.intro-image-container {
+  position: absolute;
+  bottom: 0;
+  z-index: 0;
+  max-width: 1480px;
+  height: auto;
+}
+
+.intro-image-img {
+  max-width:100%;
+  height: auto;
+}
+
+.menu {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  max-width: 1480px;
+}
+
+.section {
+  padding-top:30px;
+  padding-left: 30px;
+  padding-bottom:30px;
+}
+
+.card-title {
+  font-size: 10px;
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+.card-list {
+  scroll-snap-type: x mandatory;
+  overflow: auto;
+  overflow-y: hidden;
+  display: flex;
+}
+
+.card-list .ant-card {
+  margin-right: 10px;
+  width: 240px;
+  min-width: 240px;
+}
+
+.card-list::-webkit-scrollbar { 
+  display: none;
 }
