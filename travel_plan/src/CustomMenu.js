@@ -4,10 +4,34 @@ import { Menu, Icon } from 'antd';
 
 const { SubMenu } = Menu;
 class CustomMenu extends Component {
+
+    handleClick=(e)=>{
+      switch(e.key) {
+          case "setting:1":
+              this.props.history.push('/newyork')
+              break;
+          case "setting:2":
+              this.props.history.push('/seattle')
+              break;
+          case "setting:3":
+              this.props.history.push('/sanfrancisco')
+              break;
+          case "setting:4":
+              this.props.history.push('/losangeles')  
+              break;  
+          case "mail":
+              this.props.history.push('/')       
+              break   
+      }
+    }
+
+    handleItinerary=()=>{
+      this.props.handleItinerary()
+    }
     render() {
         return (
-            <Menu mode="horizontal" className="menu">
-                <Menu.Item key="mail">
+            <Menu mode="horizontal" className="menu" >
+                <Menu.Item key="mail" onClick={this.handleClick} >
                 <Icon type="mail" />
                  Travel Plan
                 </Menu.Item>
@@ -20,14 +44,15 @@ class CustomMenu extends Component {
                 }
                 >
                 <Menu.ItemGroup >
-                    <Menu.Item key="setting:1">New York</Menu.Item>
-                    <Menu.Item key="setting:2">Seattle</Menu.Item>
-                    <Menu.Item key="setting:3">San Francisco</Menu.Item>
-                    <Menu.Item key="setting:4">Los Angeles</Menu.Item>
+                    <Menu.Item key="setting:1" onClick={this.handleClick} name={"newyork"}>New York</Menu.Item>
+                    <Menu.Item key="setting:2" onClick={this.handleClick} >Seattle</Menu.Item>
+                    <Menu.Item key="setting:3" onClick={this.handleClick} >San Francisco</Menu.Item>
+                    <Menu.Item key="setting:4" onClick={this.handleClick} >Los Angeles</Menu.Item>
                 </Menu.ItemGroup>
                 </SubMenu>
-                <Menu.Item key="alipay">
-                    Gallery
+                <Menu.Item key="itinerary-drawer" onClick={this.handleItinerary}>
+                  <Icon type="camera" />
+                  Itinerary
                 </Menu.Item>
             </Menu>
         );

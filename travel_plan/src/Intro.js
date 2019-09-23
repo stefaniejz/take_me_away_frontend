@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
+import './App.css';
 
 class Intro extends Component {
     render() {
@@ -9,8 +10,9 @@ class Intro extends Component {
                     <h1 className="intro-text-title">
                         {this.props.introTitle}
                     </h1>
-                    <div className="intro-text-paragraph">
-                        The places everyone wants to be, before everyone wants to be there. <br />All Curated. No BS. Pinky swear.
+                    <div className="intro-text-city">
+                        {/* The places everyone wants to be, before everyone wants to be there. <br />All Curated. No BS. Pinky swear. */
+                        this.props.introText}
                     </div>
                 </div>
                 <div className="intro-image-container">

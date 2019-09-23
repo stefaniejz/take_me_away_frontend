@@ -73,6 +73,18 @@
 
 .intro-text-title {
   font-weight:700;
+  padding-top:50px;
+  padding-left:30px;
+  text-align:left;
+}
+
+
+.intro-text-city {
+  padding-top:30px;
+  padding-left:30px;
+  padding-right:750px;
+  text-align: left;
+  font-weight:400;
 }
 
 .intro-image-container {
@@ -84,7 +96,7 @@
 }
 
 .intro-image-img {
-  max-width:95%;
+  max-width:90%;
   height: auto;
 }
 
@@ -141,4 +153,13 @@
 
 .card-list::-webkit-scrollbar { 
   display: none;
+}
+
+.ant-drawer-wrapper-body {
+  background-color:#FFFFFF
+}
+
+
+.ant-drawer-wrapper-body .ant-drawer-header {
+  background-color: #FFFFFF
 }
