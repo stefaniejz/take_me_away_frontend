@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PhotoCardList from './PhotoCardList';
-import TextCard from './TextCard';
 import Intro from './Intro';
 import CustomMenu from './CustomMenu';
 import EventTimeline from './EventTimeline';

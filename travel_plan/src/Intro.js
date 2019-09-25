@@ -16,7 +16,7 @@ class Intro extends Component {
                     </div>
                 </div>
                 <div className="intro-image-container">
-                    <img className="intro-image-img" src={this.props.introImage} />
+                    <img className="intro-image-img" src={this.props.introImage} alt="https://x.kinja-static.com/assets/images/logos/placeholders/default.png"/>
                 </div>
             </div>
         );

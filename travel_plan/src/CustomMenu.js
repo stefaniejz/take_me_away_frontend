@@ -19,11 +19,18 @@ class CustomMenu extends Component {
           case "setting:4":
               this.props.history.push('/losangeles')  
               break;  
+          case "setting:5":
+              this.props.history.push('/miami')  
+              break; 
           case "mail":
               this.props.history.push('/')       
-              break   
-      }
+              break  
+          default:
+              this.props.history.push('/')       
+              break;  
+    
     }
+}
 
     handleItinerary=()=>{
       this.props.handleItinerary()
@@ -48,11 +55,16 @@ class CustomMenu extends Component {
                     <Menu.Item key="setting:2" onClick={this.handleClick} >Seattle</Menu.Item>
                     <Menu.Item key="setting:3" onClick={this.handleClick} >San Francisco</Menu.Item>
                     <Menu.Item key="setting:4" onClick={this.handleClick} >Los Angeles</Menu.Item>
+                    <Menu.Item key="setting:5" onClick={this.handleClick} >Miami</Menu.Item>
                 </Menu.ItemGroup>
                 </SubMenu>
                 <Menu.Item key="itinerary-drawer" onClick={this.handleItinerary}>
                   <Icon type="camera" />
                   Itinerary
+                </Menu.Item>
+                <Menu.Item id="user" key="user" >
+                  <Icon type="user" />
+                   Hi, User
                 </Menu.Item>
             </Menu>
         );
@@ -60,3 +72,4 @@ class CustomMenu extends Component {
 }
 
 export default withRouter(CustomMenu);
+

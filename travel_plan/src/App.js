@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
-import { Layout } from 'antd';
 import './App.css';
-import Intro from './Intro';
-import CustomMenu from './CustomMenu';
-import TextCardList from './TextCardList';
 import CityPage from './CityPage';
 import HomePage from './HomePage';
 
-
-const { Header, Footer, Sider, Content } = Layout;
 
 class App extends Component {
 
@@ -19,7 +13,6 @@ class App extends Component {
           <Router>   
             <Route exact path={'/'} render={(routerProps)=>(
               <HomePage>
-
               </HomePage>
                  
             )}/>
@@ -46,11 +39,15 @@ class App extends Component {
               introTitle='Los Angeles' introText="Perpetually-perfect weather, adaptogenic lattes, endless traffic, and some of the nation's best food can all be found in the city of overnight success stories and broken dreams. Yes, that is Miranda Kerr sweating it out next to you at SoulCycle."
               ></CityPage>     
             )}/>
+            <Route exact path={'/miami'} render={(routerProps)=>(
+              <CityPage city={'miami'} introImage="https://res.cloudinary.com/dorsia/image/upload/w_1620/optimized/web_assets/illustrations/miami.png"
+              introTitle='Miami' introText="There's nothing subtle about Miami: spring breakers and the nip-and-tucked swarm beaches and nightclubs, Ferraris flaunt, and cheery Art Deco buildings charm. A burgeoning art scene, sizzling temperatures, and Cuban culture round out an experience unlike anywhere else."
+              ></CityPage>     
+            )}/>
           </Router>
         </div>)
 
   }
-
 
 }
 

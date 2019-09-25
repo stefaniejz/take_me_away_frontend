@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
-import { Card, Modal, DatePicker } from 'antd';
-import Moment from 'moment';
+import { Modal, DatePicker } from 'antd';
 import PhotoCard from './PhotoCard';
-import { instanceOf } from 'prop-types';
 
 
-const { Meta } = Card;
 const { RangePicker} = DatePicker;
 class PhotoCardList extends Component {
     
@@ -99,6 +96,7 @@ class PhotoCardList extends Component {
                     onCancel={this.handleCancel}
                   >
                     {datePicker}
+                   
                   </Modal>
                 </div>
                 <div className="card-list">

@@ -72,7 +72,7 @@
 }
 
 .intro-text-title {
-  font-weight:700;
+  font-weight:600;
   padding-top:50px;
   padding-left:30px;
   text-align:left;
@@ -101,7 +101,6 @@
 }
 
 
-
 .menu {
   position: fixed;
   display: flex;
@@ -113,10 +112,11 @@
 
 .ant-menu.menu{
   background: #F6ECE5;
+  line-height: 50px;
 }
 
 .section {
-  padding-top:30px;
+  padding-top:40px;
   padding-left: 30px;
   padding-bottom:30px;
 }
@@ -145,10 +145,11 @@
 }
 
 
+
 .card-list .ant-card {
   margin-right: 30px;
-  width: 240px;
-  min-width: 240px;
+  width: 280px;
+  min-width: 280px;
 }
 
 .card-list::-webkit-scrollbar { 
@@ -156,10 +157,11 @@
 }
 
 .ant-drawer-wrapper-body {
-  background-color:#FFFFFF
+  background-color:#FFFFFF;
 }
 
 
 .ant-drawer-wrapper-body .ant-drawer-header {
   background-color: #FFFFFF
 }
+

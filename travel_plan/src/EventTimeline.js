@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Drawer, Timeline, Calendar } from 'antd'
 import moment from 'moment'
-import { string } from 'prop-types';
+
 
 class EventTimeline extends Component {
     constructor(props) {
@@ -29,6 +29,7 @@ class EventTimeline extends Component {
     render() {
         return (
             <Drawer 
+                width="500px"
                 title="My Itinerary"
                 placement="right"
                 closable={true}
@@ -36,10 +37,11 @@ class EventTimeline extends Component {
                 onClose={this.props.onDrawerClose}
             >
                 <Calendar fullscreen={false} onSelect={this.onCalendarSelect} />
-                <Timeline>
-                   {this.state.events.map(event=>{
-                       return <Timeline.Item>
-                       {event.activity.name}<br></br> {moment(event.time).format('LT')}</Timeline.Item>
+                <Timeline className="timeline" reverse={false} mode="left">
+                   {this.state.events.map((event,index)=>{
+                       return <Timeline.Item >
+
+                     {event.activity.name}<br></br> {moment(event.time).format('LT')}</Timeline.Item>
                    })
                    }
                 </Timeline>
