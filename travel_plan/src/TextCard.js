@@ -5,6 +5,7 @@ import { Card } from 'antd';
 const { Meta } = Card;
 class TextCard extends Component {
     handleClick=()=>{
+       
         const city=this.props.city.toLowerCase().replace(/\s/g, '')
         return this.props.history.push(`/${city}`)
     }

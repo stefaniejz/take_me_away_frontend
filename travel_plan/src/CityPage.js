@@ -3,6 +3,7 @@ import PhotoCardList from './PhotoCardList';
 import Intro from './Intro';
 import CustomMenu from './CustomMenu';
 import EventTimeline from './EventTimeline';
+import TextCardList from './TextCardList';
 
 
 class CityPage extends Component {
@@ -71,6 +72,9 @@ class CityPage extends Component {
                 <div className="section">
                   <PhotoCardList title="Activity" events={this.state.activities} showDrawer={this.showDrawer} type="activity">
                   </PhotoCardList>
+                </div>
+                <div className="section">
+                 <TextCardList title= "Other cities worth visiting..." />
                 </div>
               </div>   
         );

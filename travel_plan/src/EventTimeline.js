@@ -29,7 +29,7 @@ class EventTimeline extends Component {
     render() {
         return (
             <Drawer 
-                width="500px"
+                width="450px"
                 title="My Itinerary"
                 placement="right"
                 closable={true}

@@ -14,14 +14,14 @@ class CustomMenu extends Component {
               this.props.history.push('/seattle')
               break;
           case "setting:3":
-              this.props.history.push('/sanfrancisco')
-              break;
-          case "setting:4":
-              this.props.history.push('/losangeles')  
-              break;  
-          case "setting:5":
               this.props.history.push('/miami')  
               break; 
+          case "setting:4":
+              this.props.history.push('/sanfrancisco')
+              break;
+          case "setting:5":
+              this.props.history.push('/losangeles')  
+              break;  
           case "mail":
               this.props.history.push('/')       
               break  
@@ -40,7 +40,7 @@ class CustomMenu extends Component {
             <Menu mode="horizontal" className="menu" >
                 <Menu.Item key="mail" onClick={this.handleClick} >
                 <Icon type="mail" />
-                 Travel Plan
+                 Take me away
                 </Menu.Item>
                 <SubMenu
                 title={
@@ -53,9 +53,10 @@ class CustomMenu extends Component {
                 <Menu.ItemGroup >
                     <Menu.Item key="setting:1" onClick={this.handleClick} name={"newyork"}>New York</Menu.Item>
                     <Menu.Item key="setting:2" onClick={this.handleClick} >Seattle</Menu.Item>
-                    <Menu.Item key="setting:3" onClick={this.handleClick} >San Francisco</Menu.Item>
-                    <Menu.Item key="setting:4" onClick={this.handleClick} >Los Angeles</Menu.Item>
-                    <Menu.Item key="setting:5" onClick={this.handleClick} >Miami</Menu.Item>
+                    <Menu.Item key="setting:3" onClick={this.handleClick} >Miami</Menu.Item>
+                    <Menu.Item key="setting:4" onClick={this.handleClick} >San Francisco</Menu.Item>
+                    <Menu.Item key="setting:5" onClick={this.handleClick} >Los Angeles</Menu.Item>
+                 
                 </Menu.ItemGroup>
                 </SubMenu>
                 <Menu.Item key="itinerary-drawer" onClick={this.handleItinerary}>

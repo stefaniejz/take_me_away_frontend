@@ -18,7 +18,10 @@ class PhotoCard extends Component {
         this.props.onAddEvent(this.props.event.id)
        
     }
+     
+  
 
+    
     // handleCityName=(name)=>{
     //     switch(name) {
     //         case "newyork":
@@ -50,6 +53,8 @@ class PhotoCard extends Component {
     //       }
     // }
   
+
+
     render() {
         return (
             <div>
@@ -59,7 +64,7 @@ class PhotoCard extends Component {
                    
                         cover={<img alt="https://x.kinja-static.com/assets/images/logos/placeholders/default.png" src={this.props.event.image} />}
                     >
-                        <Meta title={this.props.event.name}  description={this.props.event.city}/>
+                        <Meta title={this.props.event.name} />
                         <br></br>
                         <Button size="small" onClick={this.handleClick}>Add Event</Button>
                     </Card>
