@@ -165,3 +165,34 @@
   background-color: #FFFFFF
 }
 
+
+.login-form {
+  max-width: 400px;
+  padding-top:100px;
+  margin-left:200px;
+  margin-right:200px;
+}
+.login-form-forgot {
+  float: right;
+}
+.login-form-button {
+  width: 100%;
+}
+
+.center-form {
+  min-height: 800px;
+  display: block;
+  text-align: center;
+
+}
+
+.ant-form.ant-form-horizontal {
+  /* max-width: 500px;
+  margin-left:200px;
+  margin-right:100px; */
+  margin-left: auto;
+  margin-right:auto;
+  display: inline-block;
+  padding-top:100px;
+  min-width: 400px;
+}

@@ -20,9 +20,12 @@ class CityPage extends Component {
     }
 
     fetchActivities= () => {
+        let city= this.props.city
+        console.log(city)
         fetch(`http://localhost:3000/activities?city=${this.props.city}`)
         .then(res=>res.json())
         .then(data=>{
+            console.log(data)
             this.setState({
                 restaurants: data.filter(a => a.activity_type === "restaurant"),
                 activities: data.filter(a => a.activity_type === "activity"),
@@ -62,7 +65,7 @@ class CityPage extends Component {
                  <EventTimeline visible={this.state.drawer_visible} onDrawerClose={this.onDrawerClose}/>
                 </div>
                 <div className="section">
-                  <PhotoCardList title="Restaurant" events={this.state.restaurants} showDrawer={this.showDrawer}type="restaurant">  
+                  <PhotoCardList title="Restaurant" events={this.state.restaurants} showDrawer={this.showDrawer} type="restaurant">  
                   </PhotoCardList>
                 </div>
                 <div className="section">

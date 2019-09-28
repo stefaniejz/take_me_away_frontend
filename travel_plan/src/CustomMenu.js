@@ -65,7 +65,7 @@ class CustomMenu extends Component {
                 </Menu.Item>
                 <Menu.Item id="user" key="user" >
                   <Icon type="user" />
-                   Hi, User
+                   {`Hi, ${localStorage.getItem("currentUserName")}`}
                 </Menu.Item>
             </Menu>
         );
