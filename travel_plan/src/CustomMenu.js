@@ -35,10 +35,25 @@ class CustomMenu extends Component {
     handleItinerary=()=>{
       this.props.handleItinerary()
     }
+
+    handleLogin=()=>{
+        this.props.history.push('/login')
+    }
+
+    handleRegister=()=>{
+        this.props.history.push('/register')
+    }
+
+    handleSignOut=()=>{
+        localStorage.removeItem("jwt")
+        localStorage.removeItem("currentUserId")
+        localStorage.removeItem("currentUserName")
+        this.props.history.push('/login')
+    }
     render() {
         return (
-            <Menu mode="horizontal" className="menu" >
-                <Menu.Item key="mail" onClick={this.handleClick} >
+            <Menu mode="horizontal" className="menu" style={{display: 'block'}}>
+                <Menu.Item key="mail" onClick={this.handleClick} style={{float: 'left'}}>
                 <Icon type="mail" />
                  Take me away
                 </Menu.Item>
@@ -49,6 +64,7 @@ class CustomMenu extends Component {
                       Explore Cities
                     </span>
                 }
+                style={{float: 'left'}}
                 >
                 <Menu.ItemGroup >
                     <Menu.Item key="setting:1" onClick={this.handleClick} name={"newyork"}>New York</Menu.Item>
@@ -59,15 +75,43 @@ class CustomMenu extends Component {
                  
                 </Menu.ItemGroup>
                 </SubMenu>
-                <Menu.Item key="itinerary-drawer" onClick={this.handleItinerary}>
+                <Menu.Item key="itinerary-drawer" onClick={this.handleItinerary} style={{float: 'left'}}>
                   <Icon type="camera" />
                   Itinerary
                 </Menu.Item>
-                <Menu.Item id="user" key="user" >
-                  <Icon type="user" />
-                   {`Hi, ${localStorage.getItem("currentUserName")}`}
-                </Menu.Item>
-            </Menu>
+                    <SubMenu
+                        title={
+                        <span className="submenu-title-wrapper">
+                        <Icon type="menu" />
+                        </span>
+                        }
+                        style={{float: 'right', marginRight: '10px'}}
+                    >
+                    <Menu.ItemGroup >
+                        {localStorage.getItem("jwt")===null? <Menu.Item key="login" onClick={this.handleLogin} >
+                            <Icon type="user" />
+                                Log in
+                            </Menu.Item>:
+                            <Menu.Item key="signout" onClick={this.handleSignOut} >
+                            <Icon type="user" />
+                                Sign out
+                        </Menu.Item>
+                        }
+                        
+                        <Menu.Item key="signup"onClick={this.handleRegister}>
+                        <Icon type="user" />
+                            Sign up 
+                        </Menu.Item>
+                    </Menu.ItemGroup>   
+                    </SubMenu> 
+               
+                    <Menu.Item id="user" key="user" style={{float: 'right'}}>
+                        <Icon type="user" />
+                        {`Hi, ${localStorage.getItem("currentUserName")}`}
+                    </Menu.Item>
+            
+
+             </Menu>
         );
     }
 }

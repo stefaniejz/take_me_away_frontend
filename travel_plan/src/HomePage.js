@@ -30,7 +30,7 @@ class HomePage extends Component {
         return (
             <div>
             <CustomMenu handleItinerary={this.handleItinerary}></CustomMenu>
-            <Intro introImage="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+            <Intro introImage="https://res.cloudinary.com/dorsia/image/upload/w_2080/optimized/web_assets/illustrations/homepage/3240.png"
             ></Intro>
              <div>
               <EventTimeline visible={this.state.drawer_visible} onDrawerClose={this.onDrawerClose}/>
@@ -45,5 +45,4 @@ class HomePage extends Component {
 }
 
 export default HomePage;
-
 

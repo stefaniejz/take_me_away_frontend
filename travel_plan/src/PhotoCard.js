@@ -21,40 +21,6 @@ class PhotoCard extends Component {
      
   
 
-    
-    // handleCityName=(name)=>{
-    //     switch(name) {
-    //         case "newyork":
-    //                 this.setState({
-    //                     cityName:"New York"
-    //                 })
-    //                 break;
-    //         case "sanfrancisco":
-    //                 this.setState({
-    //                     cityName:"San Francisco"
-    //                 })
-    //                 break;
-    //         case "losangeles":
-    //                 this.setState({
-    //                     cityName:"Los Angeles"
-    //                 })
-    //                 break;
-    //         case "seattle":
-    //                 this.setState({
-    //                     cityName:"Seattle"
-    //                 })
-    //                 break;
-    //         default:
-
-    //                 this.setState({
-    //                     cityName:this.state.cityName.charAt(0).toUpperCase()+this.state.cityName.slice(1)
-    //                 })
-    //                 break;
-    //       }
-    // }
-  
-
-
     render() {
         return (
             <div>

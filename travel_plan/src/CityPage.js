@@ -21,11 +21,15 @@ class CityPage extends Component {
 
     fetchActivities= () => {
         let city= this.props.city
-        console.log(city)
-        fetch(`http://localhost:3000/activities?city=${this.props.city}`)
+        fetch(`http://localhost:3000/activities?city=${this.props.city}`, {
+          method:'GET',
+          headers: {
+            Accept: 'application/json',
+           
+          }
+        })
         .then(res=>res.json())
         .then(data=>{
-            console.log(data)
             this.setState({
                 restaurants: data.filter(a => a.activity_type === "restaurant"),
                 activities: data.filter(a => a.activity_type === "activity"),
@@ -62,7 +66,7 @@ class CityPage extends Component {
                 <CustomMenu handleItinerary={this.handleItinerary}></CustomMenu>
                 <Intro introImage={this.props.introImage} introTitle={this.props.introTitle} introText={this.props.introText}></Intro>
                 <div>
-                 <EventTimeline visible={this.state.drawer_visible} onDrawerClose={this.onDrawerClose}/>
+                 <EventTimeline visible={this.state.drawer_visible} onDrawerClose={this.onDrawerClose} city={this.props.city} />
                 </div>
                 <div className="section">
                   <PhotoCardList title="Restaurant" events={this.state.restaurants} showDrawer={this.showDrawer} type="restaurant">  

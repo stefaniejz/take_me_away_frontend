@@ -26,9 +26,20 @@ class NormalLoginForm extends Component {
                   }
                 })
               })
-                .then(r => r.json())
+                .then(r => {
+                    // if(r.status===401) {
+                    //   this.props.form.setFields({
+                    //       username:{
+                    //          errors:[new Error("Username and Passwork don't match")]
+                    //       }
+                    //     })
+                       
+                    //  }
+                        return r.json()       
+                    
+                })
                 .then(data => {
-                    console.log(data);
+                    console.log(data)
                     localStorage.setItem('currentUserId', data.user.id);
                     localStorage.setItem('currentUserName', data.user.name);
                     localStorage.setItem('jwt', data.jwt);

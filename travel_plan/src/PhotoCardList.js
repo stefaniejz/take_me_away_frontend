@@ -29,7 +29,7 @@ class PhotoCardList extends Component {
                start_time:this.state.start_time,
                end_time:this.state.end_time,
                activity_id:this.state.target_activity_id,
-               user_id:1
+               user_id:localStorage.getItem("currentUserId")
            })
        })
     }
@@ -96,7 +96,6 @@ class PhotoCardList extends Component {
                     onCancel={this.handleCancel}
                   >
                     {datePicker}
-                   
                   </Modal>
                 </div>
                 <div className="card-list">
