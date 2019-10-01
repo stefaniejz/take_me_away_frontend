@@ -28,10 +28,7 @@ class GoogleMap extends Component {
           }
         })
 
-        
-       
-        // googleMapScript.src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlobx_kWFO3HlO9yGmZKV0_rwm6--2xCM&libraries=places"
-        // window.document.body.appendChild(googleScript)
+    
 
     }
 
