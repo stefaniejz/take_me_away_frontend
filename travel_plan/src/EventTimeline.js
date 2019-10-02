@@ -76,6 +76,7 @@ class EventTimeline extends Component {
 
         this.setState({
           visible: false,
+          notes:[...this.state.notes,{city:this.props.city,content:this.nodeContent,user_id:localStorage.getItem("currentUserId"),time:this.state.time}]
         });
         this.timePickerRef.current.state.value=null;
       };
