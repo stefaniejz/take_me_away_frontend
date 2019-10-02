@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom'
 import './App.css';
 import { Form, Input, Icon, Checkbox, Button } from 'antd';
 
@@ -52,7 +51,21 @@ class NormalLoginForm extends Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
-            <div>
+            <div className="loginPage" style={{height: "140vh",display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+             backgroundImage: "url(https://cdn.dribbble.com/users/989466/screenshots/7305019/media/48d16a1f6e1fcbcfc7228ca6bdbbc642.png)"}}>
+                 <h1 id="sign-in" style={{color:"#F4924A", fontWeight:"bold"}}>Take Me Away!</h1>
+                 <div
+                    className="signup"
+                    style={{
+                    width: "500px",
+                    padding: "80px",
+                    // background: " #9C9C9C",
+                    opacity: "0.8"
+                    }}
+                >
                 <Form  onSubmit={this.handleSubmit} className="login-form">
                     <Form.Item>
                         {getFieldDecorator('username', {
@@ -89,6 +102,10 @@ class NormalLoginForm extends Component {
                         Or <a href="/register" onClick={this.handleRegister}>register now!</a>
                     </Form.Item>
                 </Form>
+                </div>
+                <style>
+                       @import url('https://fonts.googleapis.com/css?family=Mansalva|Pacifico|Permanent+Marker&display=swap');
+                </style>
 
             </div>
         );

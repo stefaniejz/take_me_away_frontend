@@ -1,8 +1,9 @@
 @import '~antd/dist/antd.css';
-.App {
+#root {
   text-align: center;
   padding-top: 80px;
   background-color: #F6ECE5;
+  /* background-color: rgb(255,242,224) ; */
 }
 
 .App-logo {
@@ -85,6 +86,9 @@
   padding-right:750px;
   text-align: left;
   font-weight:400;
+  font-family: 'PT Sans', sans-serif;
+  font-size:17px;
+
 }
 
 .intro-image-container {
@@ -111,7 +115,7 @@
 }
 
 .ant-menu.menu{
-  background: #F6ECE5;
+  background-color: #F6ECE5;
   line-height: 50px;
   border-bottom: 1px solid #bbbbbb
  
@@ -124,16 +128,27 @@
 }
 
 .card-title {
-  font-size: 10px;
+  font-size: 13px;
   text-align: left;
   padding-bottom: 10px;
+  font-family: 'Merriweather', serif;
+
 }
 
 .card-list {
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: mandatory;
   overflow: auto;
   overflow-y: hidden;
   display: flex;
+}
+
+.ant-card-meta-detail .ant-card-meta-title{ 
+overflow: visible;
+text-overflow: hidden;
+white-space:normal;
+min-height: 48px;
+font-family: 'Roboto Slab', serif;
+font-size:18px;
 }
 
 .card-list .ant-card {
@@ -146,12 +161,12 @@
   height: 240px;
 }
 
-
-
 .card-list .ant-card {
   margin-right: 30px;
   width: 280px;
   min-width: 280px;
+  font-family: 'Bitter', serif;
+  font-size:15px;
 }
 
 .card-list::-webkit-scrollbar { 
@@ -195,6 +210,27 @@
   margin-left: auto;
   margin-right:auto;
   display: inline-block;
-  padding-top:100px;
-  min-width: 400px;
+  padding-top:10px;
+  min-width: 300px;
+}
+
+.logo-text {
+  font-family: 'Pacifico', cursive;
+  font-size:20px;
+  color:#A22E07;
+}
+
+.title-text {
+  font-family: 'Noto Sans', sans-serif;
+  font-size:18px;
+  /* font-weight:bold */
+}
+
+#sign-in {
+  font-family: 'Pacifico', cursive;
+  font-size:40px
+}
+#signuptitle {
+  font-family: 'Pacifico', cursive;
+  font-size:35px
 }

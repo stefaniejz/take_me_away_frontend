@@ -15,7 +15,7 @@ class TextCardList extends Component {
     render() {
         return (
             <div>
-                  <div className="card-title">
+                  <div className="card-title" >
                     <h1>{this.props.title}</h1>
                   </div>
                   <div className="card-list"> 
@@ -24,6 +24,11 @@ class TextCardList extends Component {
                       })
                     }
                   </div>
+                  <style>
+                    @import url('https://fonts.googleapis.com/css?family=Caveat+Brush|Lato:400i|Love+Ya+Like+A+Sister|Mansalva|Pacifico|Permanent+Marker|Roboto+Slab&display=swap');
+                    @import url('https://fonts.googleapis.com/css?family=Caveat+Brush|Lato:400i|Love+Ya+Like+A+Sister|Mansalva|Merriweather|Pacifico|Permanent+Marker|Roboto+Slab&display=swap');
+                    @import url('https://fonts.googleapis.com/css?family=Bitter|Caveat+Brush|Lato:400i|Mansalva|Merriweather|Nunito+Sans|Pacifico|Roboto+Slab|Source+Sans+Pro&display=swap');
+                  </style>
             </div>
         );
     }

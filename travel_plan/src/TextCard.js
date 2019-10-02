@@ -14,7 +14,7 @@ class TextCard extends Component {
             <div>
                  <Card
                         hoverable
-                        style={{ width: 240 }}
+                        style={{ width: 330 }}
                         cover={<img alt="example" src={this.props.image} 
                         onClick={this.handleClick}
                         />}

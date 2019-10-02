@@ -8,12 +8,17 @@ class EventTimeline extends Component {
         super(props)
         this.state = {
             events: [],
-            visile:false
+            notes: [],
+            visile:false,
+            time:null
         }
 
         this.nodeContent =  null;
-        this.time = null
+        this.timePickerRef = React.createRef();
         this.getAllEventsForDate(moment());
+        this.getAllNotesForDate(moment());
+
+        
     }
 
     getAllEventsForDate = (selected_date) => {
@@ -25,8 +30,24 @@ class EventTimeline extends Component {
        })
     }
 
+
+    getAllNotesForDate = (selected_date) => {
+      fetch(`http://localhost:3000/notes?user_id=${localStorage.getItem("currentUserId")}&selected_date=${selected_date}`).then(res=>res.json())
+      .then(data=>{
+        this.setState({
+          notes:data
+        })
+      })
+    }
+
+
     onCalendarSelect = (value) => {
+      console.log("calendar change")
+        this.setState({
+          time:value.format()
+        })
         this.getAllEventsForDate(value.startOf('day').format());
+        this.getAllNotesForDate(value.startOf('day').format());
     }
  
     handleAddNotes=()=>{
@@ -36,18 +57,27 @@ class EventTimeline extends Component {
     }
     
     handleOk = e => {
-        console.log(this.nodeContent);
-        // fetch()
+        console.log(this.time);
+        fetch("http://localhost:3000/notes", {
+          method: "POST", 
+          headers:{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            // Authorization: `Bearer ${localStorage.getItem("jwt")}`
 
-        // content:this.nodeContent,
-        // city:this.props.city,
-        // time:this.time,
-        // user_id:loacal....
-
+          },
+          body:JSON.stringify({
+            content:this.nodeContent,
+            city:this.props.city,
+            time:this.state.time,
+            user_id:localStorage.getItem("currentUserId")
+          })
+        })
 
         this.setState({
           visible: false,
         });
+        this.timePickerRef.current.state.value=null;
       };
     
     handleCancel = e => {
@@ -55,6 +85,7 @@ class EventTimeline extends Component {
         this.setState({
           visible: false,
         });
+        this.timePickerRef.current.state.value=null;
     };
 
     handleInputSubmit=()=>{
@@ -65,14 +96,25 @@ class EventTimeline extends Component {
         this.nodeContent = value;
     };
 
-    onDateTimeChange=(value, dateString)=> {
-        this.time=value.format()
+    onTimeChange=(value, dateString)=> {
+        console.log("timechange")
+        this.setState({
+          time:value.format()
+        })
+    }
+
+    getTimelineItem = (entry) => {
+      if (entry.activity) {
+        return <Timeline.Item > {entry.activity.name}<br></br> {moment(entry.time).format('LT')} </Timeline.Item>
+      } else {
+        return <Timeline.Item > {entry.content}<br></br> {moment(entry.time).format('LT')} </Timeline.Item>
+      }
     }
 
     render() {
         return (
             <Drawer 
-                width="450px"
+                width="450px" 
                 title="My Itinerary"
                 placement="right"
                 closable={true}
@@ -81,27 +123,29 @@ class EventTimeline extends Component {
             >
                 <Calendar fullscreen={false} onSelect={this.onCalendarSelect} />
                 <Timeline className="timeline" reverse={false} mode="left">
-                <Button type="primary" onClick={this.handleAddNotes}>Add Notes</Button>
+                <Button type="primary" onClick={this.handleAddNotes}>Add Note</Button>
                 <br></br>
                 <br></br>
-                   {this.state.events.map((event,index)=>{
-                       return <Timeline.Item >
-
-                     {event.activity.name}<br></br> {moment(event.time).format('LT')}</Timeline.Item>
-                   })
-                   }
+                   { this.state.events.concat(this.state.notes).sort((a, b) => moment(a.time).valueOf() - moment(b.time).valueOf()).map((entry,index)=>{
+                       return this.getTimelineItem(entry);
+                   })} 
+                   
 
                          <Modal
-                            title="Select Time"
+                            title="Add Note to Itinerary"
                             visible={this.state.visible}
                             onOk={this.handleOk}
                             onCancel={this.handleCancel}
-                            >
-                              <TimePicker onChange={this.onTimeChange}/>
-                              Note:
+                            > 
+                              Select Time
+                              <br></br>
+                              <TimePicker ref={this.timePickerRef} format='HH:mm' size="large" onChange={this.onTimeChange} minuteStep={10} defaultValue={moment()}/>
+                              <br></br>
+                              <br></br>
+                                Note:
                               <TextArea
-                                placeholder="put node here"
-                                autosize={{ minRows: 3, maxRows: 5 }}
+                                placeholder="Input note here"
+                                autosize={{ minRows: 1, maxRows: 3 }}
                                 ref={this.nodeTextInput}
                                 onChange={this.handleUpdateNode}
                               />

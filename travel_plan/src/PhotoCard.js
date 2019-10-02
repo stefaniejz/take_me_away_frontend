@@ -30,7 +30,7 @@ class PhotoCard extends Component {
                    
                         cover={<img alt="https://x.kinja-static.com/assets/images/logos/placeholders/default.png" src={this.props.event.image} />}
                     >
-                        <Meta title={this.props.event.name} description={this.props.event.city}/>
+                        <Meta title={this.props.event.name} description={`📍 ${this.props.event.city}`}/>
                         <br></br>
                         <Button size="small" onClick={this.handleClick}>Add Event</Button>
                     </Card>

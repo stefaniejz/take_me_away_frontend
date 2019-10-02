@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import { Menu, Icon } from 'antd';
+import './App.css';
 
 const { SubMenu } = Menu;
 class CustomMenu extends Component {
@@ -54,19 +55,19 @@ class CustomMenu extends Component {
         return (
             <Menu mode="horizontal" className="menu" style={{display: 'block'}}>
                 <Menu.Item key="mail" onClick={this.handleClick} style={{float: 'left'}}>
-                <Icon type="mail" />
-                 Take me away
+                 <span className="logo-text"
+                 >Take me away </span>
                 </Menu.Item>
                 <SubMenu
                 title={
-                    <span className="submenu-title-wrapper">
+                    <span className="submenu-title-wrapper" className="title-text">
                     <Icon type="eye" />
                       Explore Cities
                     </span>
                 }
                 style={{float: 'left'}}
                 >
-                <Menu.ItemGroup >
+                <Menu.ItemGroup className="title-text">
                     <Menu.Item key="setting:1" onClick={this.handleClick} name={"newyork"}>New York</Menu.Item>
                     <Menu.Item key="setting:2" onClick={this.handleClick} >Seattle</Menu.Item>
                     <Menu.Item key="setting:3" onClick={this.handleClick} >Miami</Menu.Item>
@@ -75,7 +76,7 @@ class CustomMenu extends Component {
                  
                 </Menu.ItemGroup>
                 </SubMenu>
-                <Menu.Item key="itinerary-drawer" onClick={this.handleItinerary} style={{float: 'left'}}>
+                <Menu.Item key="itinerary-drawer" className="title-text" onClick={this.handleItinerary} style={{float: 'left'}}>
                   <Icon type="camera" />
                   Itinerary
                 </Menu.Item>
@@ -87,7 +88,7 @@ class CustomMenu extends Component {
                         }
                         style={{float: 'right', marginRight: '10px'}}
                     >
-                    <Menu.ItemGroup >
+                    <Menu.ItemGroup  className="title-text">
                         {localStorage.getItem("jwt")===null? <Menu.Item key="login" onClick={this.handleLogin} >
                             <Icon type="user" />
                                 Log in
@@ -109,7 +110,11 @@ class CustomMenu extends Component {
                         <Icon type="user" />
                         {`Hi, ${localStorage.getItem("currentUserName")}`}
                     </Menu.Item>
-            
+                    <style>
+                       @import url('https://fonts.googleapis.com/css?family=Mansalva|Pacifico|Permanent+Marker&display=swap');
+                       @import url('https://fonts.googleapis.com/css?family=Mansalva|Nunito|Pacifico|Permanent+Marker&display=swap');
+                       @import url('https://fonts.googleapis.com/css?family=Bitter|Caveat+Brush|Lato:400i|Mansalva|Merriweather|Noto+Sans|Nunito+Sans|PT+Sans|Pacifico|Roboto+Slab|Source+Sans+Pro&display=swap');
+                    </style>
 
              </Menu>
         );

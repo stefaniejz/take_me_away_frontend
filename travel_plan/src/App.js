@@ -48,7 +48,7 @@ class App extends Component {
        
   
     return (
-        <div className="App">
+        < React.Fragment className="App">
           <Router>
             <Route exact path={'/login'} render={(routerProps)=>(
                <div className="center-form">
@@ -112,7 +112,7 @@ class App extends Component {
                </div>
             )}/>
           </Router> */}
-        </div>)
+        </ React.Fragment>)
 
   }
 

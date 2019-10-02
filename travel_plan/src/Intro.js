@@ -11,13 +11,15 @@ class Intro extends Component {
                         {this.props.introTitle}
                     </h1>
                     <div className="intro-text-city">
-                        {/* The places everyone wants to be, before everyone wants to be there. <br />All Curated. No BS. Pinky swear. */
-                        this.props.introText}
+                        {this.props.introText}
                     </div>
                 </div>
                 <div className="intro-image-container">
                     <img className="intro-image-img" src={this.props.introImage} alt="https://x.kinja-static.com/assets/images/logos/placeholders/default.png"/>
                 </div>
+                <style>
+                    @import url('https://fonts.googleapis.com/css?family=Bitter|Caveat+Brush|Lato:400i|Mansalva|Merriweather|Nunito+Sans|PT+Sans|Pacifico|Roboto+Slab|Source+Sans+Pro&display=swap');
+                </style>
             </div>
         );
     }
