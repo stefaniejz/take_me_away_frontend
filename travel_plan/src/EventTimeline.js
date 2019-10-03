@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Drawer, Timeline, Calendar, Button, Modal, TimePicker, Input } from 'antd'
 import moment from 'moment'
+import time from 'moment'
 
 const { TextArea } = Input;
 class EventTimeline extends Component {
@@ -10,9 +11,10 @@ class EventTimeline extends Component {
             events: [],
             notes: [],
             visile:false,
-            time:null
         }
 
+        this.selectedDate = moment();
+        this.selectedTime = moment();
         this.nodeContent =  null;
         this.timePickerRef = React.createRef();
     }
@@ -39,11 +41,9 @@ class EventTimeline extends Component {
 
     onCalendarSelect = (value) => {
       console.log("calendar change")
-        this.setState({
-          time:value.format()
-        })
-        this.getAllEventsForDate(value.startOf('day').format());
-        this.getAllNotesForDate(value.startOf('day').format());
+      this.selectedDate = value;
+      this.getAllEventsForDate(value.startOf('day').format());
+      this.getAllNotesForDate(value.startOf('day').format());
     }
  
     handleAddNotes=()=>{
@@ -53,7 +53,13 @@ class EventTimeline extends Component {
     }
     
     handleOk = e => {
-        console.log(this.time);
+        let eventDateTime =  this.selectedDate.set({
+          hour: this.selectedTime.get('hour'),
+          minute: this.selectedTime.get('minute'),
+          second: 0,
+          millisecond: 0,
+        });
+
         fetch("http://localhost:3000/notes", {
           method: "POST", 
           headers:{
@@ -65,14 +71,14 @@ class EventTimeline extends Component {
           body:JSON.stringify({
             content:this.nodeContent,
             city:this.props.city,
-            time:this.state.time,
+            time:eventDateTime.format(),
             user_id:localStorage.getItem("currentUserId")
           })
         })
 
         this.setState({
           visible: false,
-          notes:[...this.state.notes,{city:this.props.city,content:this.nodeContent,user_id:localStorage.getItem("currentUserId"),time:this.state.time}]
+          notes:[...this.state.notes,{city:this.props.city,content:this.nodeContent,user_id:localStorage.getItem("currentUserId"),time:eventDateTime}]
         });
         this.timePickerRef.current.state.value=null;
       };
@@ -95,6 +101,7 @@ class EventTimeline extends Component {
 
     onTimeChange=(value, dateString)=> {
         console.log("timechange")
+        this.selectedTime = value;
         this.setState({
           time:value.format()
         })
@@ -109,10 +116,9 @@ class EventTimeline extends Component {
     }
 
     reloadEventsAndNotes = (visible) => {
-      if (visible && this.state.time) {
-        console.log(this.state.time);
-        this.getAllEventsForDate(this.state.time);
-        this.getAllNotesForDate(this.state.time);
+      if (visible && this.selectedDate) {
+        this.getAllEventsForDate(this.selectedDate);
+        this.getAllNotesForDate(this.selectedDate);
       }
     }
     
