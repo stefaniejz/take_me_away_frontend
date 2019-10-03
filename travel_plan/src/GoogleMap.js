@@ -6,59 +6,70 @@ class GoogleMap extends Component {
     constructor(props) {
         super(props);
         this.googleMapRef = React.createRef();
-        this.state = {}
+        this.eventName = this.props.eventName;
+        console.log(props)
     }
 
-    componentDitMount() {
+    componentDidMount() {
         this.googleMap = this.createGoogleMap()
         this.googlePlace = this.createGooglePlace()
 
-        let request = {
-            query: this.props.eventName + ' ' + this.props.city,
-            fields: ['name', 'geometry', 'formatted_address']
+        var request = {
+            query: this.eventName + ' ' + this.props.city,
+            fields: ['name', 'geometry', 'formatted_address'],
         };
-
         this.googlePlace.findPlaceFromQuery(request, (results, status) => {
-          if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-              this.createMarker(results[0].geometry.location);
-              this.googleMap.setCenter(results[0].geometry.location);
-              this.setState({
-                  address: results[0].formatted_address
-              })
-          }
-        })
+            if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+                this.createMarker(results[0].geometry.location);
+                this.googleMap.setCenter(results[0].geometry.location);
+                console.log(results[0])
+                this.address = results[0].formatted_address
+            }
+        });
+      }
 
-    
+    createGoogleMap = () =>
+    new window.google.maps.Map(this.googleMapRef.current, {
+        zoom: 16,
+        disableDefaultUI: true,
+    })
 
-    }
+    createGooglePlace = () =>
+    new window.google.maps.places.PlacesService(this.googleMap);
 
-    createGoogleMap =()=>{
-        new window.google.maps.Map(this.googleMapsRef.current, {
-            zoom:16,
-            disableDefaultUI: true,
-        })
-    }
-   
-    createGooglePlace = () =>{
-        new window.google.maps.places.PlacesService(this.google.Map)
-    }
-    createMarker = () => {
+
+    createMarker = (location) =>
         new window.google.maps.Marker({
             position: { lat: location.lat(), lng: location.lng()},
-            map: this.googleMap
+            map: this.googleMap,
         })
-    }
+
     render() {
+        if (localStorage.getItem("selectedEventName") !== null) {
+            this.eventName  = localStorage.getItem("selectedEventName")
+        }
+        var request = {
+            query: this.eventName + ' ' + this.props.city,
+            fields: ['name', 'geometry', 'formatted_address'],
+        };
+        if (this.googlePlace) {
+            this.googlePlace.findPlaceFromQuery(request, (results, status) => {
+                if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+                    this.createMarker(results[0].geometry.location);
+                    this.googleMap.setCenter(results[0].geometry.location);
+                    console.log(results[0])
+                }
+            });
+        }
+
         return (
             <div>
-               <div>
-                   <Icon type="environment" /> 
-                   {this.state.address}
-               </div>
-               <div
-                  id="google-map"
-                  ref={this.googleMapRef}
-                  style = {{ width: '400px', height: '300px'}}
+                <div>
+                </div>
+                <div
+                    id="google-map"
+                    ref={this.googleMapRef}
+                    style={{ width: '400px', height: '300px' }}
                 />
             </div>
         );
@@ -66,4 +77,3 @@ class GoogleMap extends Component {
 }
 
 export default withRouter(GoogleMap);
-

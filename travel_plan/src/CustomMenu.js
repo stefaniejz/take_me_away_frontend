@@ -53,7 +53,7 @@ class CustomMenu extends Component {
     }
     render() {
         return (
-            <Menu mode="horizontal" className="menu" style={{display: 'block'}}>
+            <Menu mode="horizontal" className="menu" style={{display: 'block'}} overflowedIndicator={null}>
                 <Menu.Item key="mail" onClick={this.handleClick} style={{float: 'left'}}>
                  <span className="logo-text"
                  >Take me away </span>

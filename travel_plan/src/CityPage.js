@@ -69,15 +69,15 @@ class CityPage extends Component {
                  <EventTimeline visible={this.state.drawer_visible} onDrawerClose={this.onDrawerClose} city={this.props.city} />
                 </div>
                 <div className="section">
-                  <PhotoCardList title="Restaurants" events={this.state.restaurants} showDrawer={this.showDrawer} type="restaurant">  
+                  <PhotoCardList title="Restaurants" events={this.state.restaurants} showDrawer={this.showDrawer} type="restaurant" city={this.props.city}>  
                   </PhotoCardList>
                 </div>
                 <div className="section">
-                  <PhotoCardList title="Hotels" events={this.state.hotels} showDrawer={this.showDrawer}  type="hotel">
+                  <PhotoCardList title="Hotels" events={this.state.hotels} showDrawer={this.showDrawer}  type="hotel" city={this.props.city}>
                   </PhotoCardList>
                 </div>
                 <div className="section">
-                  <PhotoCardList title="Activities" events={this.state.activities} showDrawer={this.showDrawer} type="activity">
+                  <PhotoCardList title="Activities" events={this.state.activities} showDrawer={this.showDrawer} type="activity" city={this.props.city}>
                   </PhotoCardList>
                 </div>
                 <div className="section">

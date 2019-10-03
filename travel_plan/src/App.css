@@ -1,7 +1,6 @@
 @import '~antd/dist/antd.css';
 #root {
   text-align: center;
-  padding-top: 80px;
   background-color: #F6ECE5;
   /* background-color: rgb(255,242,224) ; */
 }

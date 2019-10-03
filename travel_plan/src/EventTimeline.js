@@ -15,10 +15,6 @@ class EventTimeline extends Component {
 
         this.nodeContent =  null;
         this.timePickerRef = React.createRef();
-        this.getAllEventsForDate(moment());
-        this.getAllNotesForDate(moment());
-
-        
     }
 
     getAllEventsForDate = (selected_date) => {
@@ -112,7 +108,17 @@ class EventTimeline extends Component {
       }
     }
 
+    reloadEventsAndNotes = (visible) => {
+      if (visible && this.state.time) {
+        console.log(this.state.time);
+        this.getAllEventsForDate(this.state.time);
+        this.getAllNotesForDate(this.state.time);
+      }
+    }
+    
+
     render() {
+
         return (
             <Drawer 
                 width="450px" 
@@ -121,6 +127,7 @@ class EventTimeline extends Component {
                 closable={true}
                 visible={this.props.visible}
                 onClose={this.props.onDrawerClose}
+                afterVisibleChange={this.reloadEventsAndNotes}
             >
                 <Calendar fullscreen={false} onSelect={this.onCalendarSelect} />
                 <Timeline className="timeline" reverse={false} mode="left">

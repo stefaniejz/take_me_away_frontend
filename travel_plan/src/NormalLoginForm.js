@@ -26,14 +26,16 @@ class NormalLoginForm extends Component {
                 })
               })
                 .then(r => {
-                    // if(r.status===401) {
-                    //   this.props.form.setFields({
-                    //       username:{
-                    //          errors:[new Error("Username and Passwork don't match")]
-                    //       }
-                    //     })
-                       
-                    //  }
+                    console.log(r)
+                    if(r.status===401) {
+                        console.log("here")
+                      this.props.form.setFields({
+                          username:{
+                             errors:[new Error("Username and Password don't match")]
+                          }
+                        })
+                        throw new Error("Username and Password don't match");
+                     }
                         return r.json()       
                     
                 })
@@ -43,6 +45,8 @@ class NormalLoginForm extends Component {
                     localStorage.setItem('currentUserName', data.user.name);
                     localStorage.setItem('jwt', data.jwt);
                     this.props.history.push("/");
+                }).catch(error => {
+                    
                 })
           }
         });

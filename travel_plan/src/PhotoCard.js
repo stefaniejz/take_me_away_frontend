@@ -15,7 +15,7 @@ class PhotoCard extends Component {
 //    }
 
     handleClick=()=>{
-        this.props.onAddEvent(this.props.event.id)
+        this.props.onAddEvent(this.props.event.id, this.props.event.name)
        
     }
      

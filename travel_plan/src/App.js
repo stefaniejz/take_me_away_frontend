@@ -16,7 +16,11 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 )
 
 class App extends Component {
-
+  componentDidMount() {
+    const googleMapScript = document.createElement('script')
+    googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAP_API_KEY}&language=en&libraries=map,places`
+    window.document.body.appendChild(googleMapScript)
+  }
   wrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLoginForm);
   wrappedRegistrationForm = Form.create({ name: 'register' })(RegistrationForm);
   render() {

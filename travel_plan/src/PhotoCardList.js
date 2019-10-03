@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import { Modal, DatePicker } from 'antd';
 import PhotoCard from './PhotoCard';
+import GoogleMap from './GoogleMap';
 
 
 const { RangePicker} = DatePicker;
@@ -18,7 +19,6 @@ class PhotoCardList extends Component {
     }
 
     sendCreateEventsRequest = () => {
-       console.log(this.state)
        fetch("http://localhost:3000/events", {
            method: "POST",
            headers:{
@@ -48,11 +48,12 @@ class PhotoCardList extends Component {
         });
     };
 
-    handleAddEvent=(activity_id)=>{
+    handleAddEvent=(activity_id, activity_name)=>{
         this.setState({
             target_activity_id: activity_id,
             modal_visible: true
         });
+        localStorage.setItem('selectedEventName', activity_name)
     }
 
     onRangeChange=(dateRange, endDate)=>{
@@ -83,6 +84,7 @@ class PhotoCardList extends Component {
 
             />
         }
+
         return (
             <div>
                 <div className="card-title">
@@ -96,6 +98,7 @@ class PhotoCardList extends Component {
                     onCancel={this.handleCancel}
                   >
                     {datePicker}
+                    <GoogleMap eventName={this.state.target_activity_name} city={this.props.city} ref={this.googleMapRef}/>
                   </Modal>
                 </div>
                 <div className="card-list">
